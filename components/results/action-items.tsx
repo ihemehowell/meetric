@@ -92,21 +92,21 @@ export default function ActionItems({ initial, onChange, meetingId }: Props) {
   }, [meetingId, items])
 
   return (
-    <div className="rounded-3xl border bg-card/70 p-7 backdrop-blur">
+    <div className="rounded-3xl border bg-card/70 p-4 sm:p-6 md:p-7 backdrop-blur space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <CheckCircle2 className="h-5 w-5 text-primary" />
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div className="flex items-center gap-2 min-w-0">
+          <CheckCircle2 className="h-5 w-5 text-primary shrink-0" />
           <h2 className="text-xl font-semibold">Action Items</h2>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
           {/* Save button — only visible when there are unsaved changes */}
           {hasUnsaved && (
             <button
               onClick={persist}
               disabled={saveState === "saving"}
-              className={`flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium transition-all ${
+              className={`flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium transition-all whitespace-nowrap ${
                 saveState === "error"
                   ? "bg-red-500/10 text-red-500"
                   : saveState === "saved"
@@ -133,12 +133,12 @@ export default function ActionItems({ initial, onChange, meetingId }: Props) {
 
       {/* Anonymous hint */}
       {!meetingId && (
-        <p className="mt-2 text-xs text-muted-foreground">
+        <p className="text-xs text-muted-foreground">
           Sign in to save edits across sessions.
         </p>
       )}
 
-      <div className="mt-6 space-y-4">
+      <div className="space-y-4">
         {items.length === 0 ? (
           <p className="text-sm text-muted-foreground">All tasks cleared.</p>
         ) : (
@@ -147,7 +147,7 @@ export default function ActionItems({ initial, onChange, meetingId }: Props) {
               // ── Edit mode ────────────────────────────────────────────────────
               <div
                 key={item.id}
-                className="rounded-2xl border border-primary/30 bg-background/70 p-5 space-y-3"
+                className="rounded-2xl border border-primary/30 bg-background/70 p-4 sm:p-5 space-y-3"
               >
                 <input
                   autoFocus
@@ -156,7 +156,7 @@ export default function ActionItems({ initial, onChange, meetingId }: Props) {
                   onChange={(e) => setDraft((d) => ({ ...d, task: e.target.value }))}
                   placeholder="Task"
                 />
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <input
                     className="flex-1 rounded-xl border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
                     value={draft.assignee ?? ""}
@@ -181,16 +181,16 @@ export default function ActionItems({ initial, onChange, meetingId }: Props) {
                     <option>Low</option>
                   </select>
                 </div>
-                <div className="flex gap-2 justify-end">
+                <div className="flex flex-col-reverse sm:flex-row sm:gap-2 sm:justify-end gap-2">
                   <button
                     onClick={cancelEdit}
-                    className="flex items-center gap-1 rounded-xl px-3 py-1.5 text-sm hover:bg-muted transition-colors"
+                    className="flex items-center justify-center sm:justify-start gap-1 rounded-xl px-3 py-1.5 text-sm hover:bg-muted transition-colors"
                   >
                     <X className="h-3.5 w-3.5" /> Cancel
                   </button>
                   <button
                     onClick={saveEdit}
-                    className="flex items-center gap-1 rounded-xl bg-primary px-3 py-1.5 text-sm text-primary-foreground hover:bg-primary/90 transition-colors"
+                    className="flex items-center justify-center sm:justify-start gap-1 rounded-xl bg-primary px-3 py-1.5 text-sm text-primary-foreground hover:bg-primary/90 transition-colors"
                   >
                     <Check className="h-3.5 w-3.5" /> Apply
                   </button>
@@ -200,14 +200,14 @@ export default function ActionItems({ initial, onChange, meetingId }: Props) {
               // ── View mode ────────────────────────────────────────────────────
               <div
                 key={item.id}
-                className={`rounded-2xl border bg-background/70 p-5 transition-opacity ${
+                className={`rounded-2xl border bg-background/70 p-4 sm:p-5 transition-opacity ${
                   item.status === "done" ? "opacity-50" : ""
                 }`}
               >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between sm:gap-4 gap-3">
+                  <div className="flex-1 min-w-0">
                     <h3
-                      className={`font-medium ${
+                      className={`font-medium break-words ${
                         item.status === "done" ? "line-through text-muted-foreground" : ""
                       }`}
                     >
@@ -218,9 +218,9 @@ export default function ActionItems({ initial, onChange, meetingId }: Props) {
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap sm:justify-end">
                     <div
-                      className={`rounded-full px-3 py-1 text-xs ${
+                      className={`rounded-full px-3 py-1 text-xs whitespace-nowrap ${
                         priorityStyles[item.priority] ?? priorityStyles.Medium
                       }`}
                     >
@@ -250,7 +250,7 @@ export default function ActionItems({ initial, onChange, meetingId }: Props) {
                 </div>
 
                 <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
-                  <Clock3 className="h-4 w-4" />
+                  <Clock3 className="h-4 w-4 shrink-0" />
                   Due {item.due}
                 </div>
               </div>

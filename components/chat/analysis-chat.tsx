@@ -118,19 +118,19 @@ export default function AnalysisChat({ analysis, onPatch, meetingId }: Props) {
   }
 
   return (
-    <div className="flex flex-col rounded-3xl border bg-card/70 backdrop-blur overflow-hidden mt-33" style={{ height: "550px" }}>
+    <div className="flex flex-col rounded-3xl border bg-card/70 backdrop-blur overflow-hidden" style={{ height: "auto", minHeight: "400px", maxHeight: "550px" }}>
 
       {/* Header */}
-      <div className="flex items-center gap-2.5 border-b px-4 py-3 shrink-0">
-        <div className="flex h-7 w-7 items-center justify-center rounded-xl bg-primary/10">
+      <div className="flex items-center gap-2.5 border-b px-3 sm:px-4 py-3 shrink-0">
+        <div className="flex h-7 w-7 items-center justify-center rounded-xl bg-primary/10 shrink-0">
           <Sparkles className="h-3.5 w-3.5 text-primary" />
         </div>
-        <div className="flex-1">
+        <div className="flex-1 min-w-0">
           <p className="text-sm font-medium leading-none">Meeting AI</p>
-          <p className="text-xs text-muted-foreground mt-0.5">Ask questions or edit the analysis</p>
+          <p className="text-xs text-muted-foreground mt-0.5 truncate">Ask questions or edit the analysis</p>
         </div>
         {!meetingId && (
-          <span className="text-[10px] text-muted-foreground border rounded-full px-2 py-0.5">
+          <span className="text-[10px] text-muted-foreground border rounded-full px-2 py-0.5 shrink-0">
             not saved
           </span>
         )}
@@ -164,7 +164,7 @@ export default function AnalysisChat({ analysis, onPatch, meetingId }: Props) {
                 : <User className="h-3 w-3" />}
             </div>
 
-            <div className={`max-w-[80%] rounded-2xl px-3 py-2 text-xs leading-5 ${
+            <div className={`max-w-[75%] sm:max-w-[80%] rounded-2xl px-3 py-2 text-xs leading-5 break-words ${
               msg.role === "user"
                 ? "rounded-br-sm bg-primary text-primary-foreground"
                 : "rounded-bl-sm bg-muted/60 text-foreground"
@@ -186,7 +186,7 @@ export default function AnalysisChat({ analysis, onPatch, meetingId }: Props) {
 
         {loading && (
           <div className="flex items-end gap-2">
-            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10">
+            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 shrink-0">
               <Bot className="h-3 w-3 text-primary" />
             </div>
             <div className="rounded-2xl rounded-bl-sm bg-muted/60 px-3 py-2">
@@ -206,7 +206,7 @@ export default function AnalysisChat({ analysis, onPatch, meetingId }: Props) {
       <div className="border-t bg-background/50 px-3 py-3 shrink-0">
         <div className="flex items-center gap-2">
           <input
-            className="flex-1 rounded-xl border bg-muted/40 px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-primary placeholder:text-muted-foreground"
+            className="flex-1 rounded-xl border bg-muted/40 px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-primary placeholder:text-muted-foreground min-w-0"
             placeholder="Ask or edit — e.g. reassign ai-2 to Marcus..."
             value={input}
             onChange={(e) => setInput(e.target.value)}

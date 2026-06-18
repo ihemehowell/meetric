@@ -155,12 +155,12 @@ export default function ProcessingScreen({ transcript, onComplete, onRetry }: Pr
   // ── Error state ─────────────────────────────────────────────────────────────
   if (error) {
     return (
-      <div className="mx-auto max-w-xl px-4 py-16 text-center">
-        <div className="mx-auto mb-6 flex h-12 w-12 items-center justify-center rounded-2xl border border-destructive/20 bg-destructive/5">
+      <div className="mx-auto max-w-xl px-4 py-8 sm:py-16 text-center">
+        <div className="mx-auto mb-6 flex h-12 w-12 items-center justify-center rounded-2xl border border-destructive/20 bg-destructive/5 shrink-0">
           <XCircle className="h-5 w-5 text-destructive" />
         </div>
 
-        <h2 className="text-lg font-medium tracking-tight">Analysis failed</h2>
+        <h2 className="text-lg sm:text-xl font-medium tracking-tight">Analysis failed</h2>
 
         <p className="mx-auto mt-2 max-w-sm text-sm leading-6 text-muted-foreground">
           {error}
@@ -183,22 +183,22 @@ export default function ProcessingScreen({ transcript, onComplete, onRetry }: Pr
 
   // ── Processing state ─────────────────────────────────────────────────────────
   return (
-    <div className="mx-auto max-w-xl px-4 py-10">
+    <div className="mx-auto max-w-xl px-4 py-6 sm:py-10 w-full">
       {/* Header */}
-      <div className="mb-8 text-center">
+      <div className="mb-6 sm:mb-8 text-center">
         <motion.div
           animate={{ scale: [1, 1.04, 1] }}
           transition={{ duration: 2.5, repeat: Infinity }}
-          className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-border/40 bg-card shadow-sm"
+          className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-border/40 bg-card shadow-sm shrink-0"
         >
           <Brain className="h-5 w-5 text-foreground/70" />
         </motion.div>
 
-        <h2 className="text-xl font-medium tracking-tight">
+        <h2 className="text-lg sm:text-xl font-medium tracking-tight">
           Processing meeting intelligence
         </h2>
 
-        <p className="mx-auto mt-2 max-w-sm text-sm leading-6 text-muted-foreground">
+        <p className="mx-auto mt-2 max-w-sm text-xs sm:text-sm leading-6 text-muted-foreground">
           6 AI agents running in parallel — extracting tasks, blockers, sprints, and follow-ups.
         </p>
       </div>
@@ -231,7 +231,7 @@ export default function ProcessingScreen({ transcript, onComplete, onRetry }: Pr
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.04 }}
-              className={`flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-300 ${
+              className={`flex items-center gap-2 sm:gap-3 rounded-xl px-2 sm:px-3 py-2 sm:py-2.5 transition-colors duration-300 ${
                 isActive
                   ? "bg-muted/60 ring-1 ring-border/60"
                   : isDone
@@ -263,19 +263,19 @@ export default function ProcessingScreen({ transcript, onComplete, onRetry }: Pr
               {/* Text */}
               <div className="min-w-0 flex-1">
                 <p
-                  className={`text-sm font-medium leading-none ${
+                  className={`text-xs sm:text-sm font-medium leading-none ${
                     isPending ? "text-muted-foreground/50" : "text-foreground"
                   }`}
                 >
                   {step.name}
                 </p>
-                <p className="mt-1 text-xs text-muted-foreground/60">{step.desc}</p>
+                <p className="mt-0.5 text-xs text-muted-foreground/60 hidden sm:block">{step.desc}</p>
               </div>
 
               {/* Badge */}
               <div className="shrink-0">
                 {isDone && (
-                  <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] text-muted-foreground">
+                  <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] text-muted-foreground whitespace-nowrap">
                     done
                   </span>
                 )}
@@ -302,11 +302,11 @@ export default function ProcessingScreen({ transcript, onComplete, onRetry }: Pr
 
       {/* Footer */}
       <div className="flex items-center justify-between border-t border-border/30 pt-4 text-xs text-muted-foreground">
-        <div className="flex items-center gap-2">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-          <span>{footerStatus}</span>
+        <div className="flex items-center gap-2 min-w-0">
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400 shrink-0" />
+          <span className="truncate">{footerStatus}</span>
         </div>
-        <span className="tabular-nums">{elapsed}s</span>
+        <span className="tabular-nums shrink-0 ml-2">{elapsed}s</span>
       </div>
     </div>
   )
