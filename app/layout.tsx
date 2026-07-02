@@ -21,10 +21,10 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://minutely-ai.vercel.app"),
+  metadataBase: new URL("https://meetric-ai.vercel.app"),
   title: {
-    default: "Minutely",
-    template: "%s | Minutely",
+    default: "Meetric",
+    template: "%s | Meetric",
   },
   description:
     "AI-powered meeting intelligence platform that transforms transcripts into summaries, action items, decisions, and live task boards using Qwen AI.",

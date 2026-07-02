@@ -24,7 +24,7 @@ const steps = [
     number: "02",
     title: "AI extracts insights",
     description:
-      "Minutely identifies summaries, action items, owners, priorities, and decisions using AI reasoning.",
+      "Meetric identifies summaries, action items, owners, priorities, and decisions using AI reasoning.",
     icon: BrainCircuit,
     status: "AI Processing",
   },

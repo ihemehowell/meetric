@@ -19,7 +19,7 @@ const features = [
     icon: BrainCircuit,
     title: "AI Meeting Understanding",
     description:
-      "Minutely understands context, decisions, and implicit commitments from long conversations.",
+      "Meetric understands context, decisions, and implicit commitments from long conversations.",
     className: "md:col-span-2 ",
   },
   {
