@@ -77,7 +77,7 @@ export default function HowItWorks() {
           </h2>
 
           <p className="mt-5 text-lg leading-8 text-muted-foreground">
-            Minutely transforms conversations into structured workflows
+            Meetric transforms conversations into structured workflows
             using autonomous AI agents and collaborative execution pipelines.
           </p>
         </motion.div>

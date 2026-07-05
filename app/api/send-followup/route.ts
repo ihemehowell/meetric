@@ -59,7 +59,7 @@ const CREATE_CALENDAR_EVENT_TOOL = {
 
 function buildSystemPrompt(action: ActionMode): string {
   const rules: string[] = [
-    "You are Minutely's follow-up dispatch agent.",
+    "You are Meetric's follow-up dispatch agent.",
     "",
     "The human has already reviewed and approved this action.",
     "",

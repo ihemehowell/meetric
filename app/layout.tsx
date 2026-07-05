@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://meetric-ai.vercel.app"),
+  metadataBase: new URL("https://meetric.vercel.app"),
   title: {
     default: "Meetric",
     template: "%s | Meetric",
@@ -41,16 +41,16 @@ export const metadata: Metadata = {
   authors: [{ name: "HowellDevs" }],
   creator: "HowellDevs",
   openGraph: {
-    title: "Minutely",
+    title: "Meetric",
     description: "Turn meetings into structured action plans with Qwen AI.",
-    url: "https://minutely-ai.vercel.app",
-    siteName: "Minutely",
+    url: "https://meetric.vercel.app",
+    siteName: "Meetric",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Minutely",
+    title: "Meetric",
     description: "AI-powered meeting intelligence built with Qwen AI.",
   },
 }
